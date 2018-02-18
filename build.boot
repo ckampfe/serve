@@ -6,6 +6,7 @@
                  [org.clojure/tools.nrepl   "0.2.12" :scope "test"]
                  [cljs-node-io              "0.5.0"]
                  [hiccups                   "0.3.0"]
+                 [macchiato/core            "0.2.8"]
                  [org.clojure/clojurescript "1.9.946"]
                  [org.clojure/core.async    "0.3.465"]
                  [org.clojure/tools.cli     "0.3.5"]])
