@@ -4,7 +4,8 @@
             [cljs.tools.cli :refer [parse-opts]]
             [cljs-node-io.fs :as fs]
             [hiccups.runtime :as hiccupsrt]
-            [http :as node-http])
+            [http :as node-http]
+            [macchiato.util.mime-type :as mime])
   (:require-macros [hiccups.core :as hiccups :refer [html]]))
 
 (nodejs/enable-util-print!)
@@ -64,9 +65,8 @@
           (.setHeader res "Content-Type", "text/html")
           (.end res (<! (build-template full-path))))
         (do
-          ;; for now assume plain text.
-          ;; in the future, this could be a lookup.
-          (.setHeader res "Content-Type", "text/plain")
+          (when-let [content-type (mime/ext-mime-type full-path)]
+            (.setHeader res "Content-Type", content-type))
           (.end res (fs/readFile full-path "")))))))
 
 (defn start-server! [port]
