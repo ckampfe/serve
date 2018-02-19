@@ -34,7 +34,7 @@
         (throw (js/Error. err))))))
 
 (defn is-dir? [path]
-  (.isDirectory (fs/lstat path)))
+  (.isDirectory (fs/stat path)))
 
 (defn build-template [directory-path]
   (go
@@ -47,7 +47,8 @@
          [:li
           [:a {:href (if (is-dir? (str directory-path "/" path))
                        (str path "/")
-                       path)} path]])]])))
+                       path)}
+           path]])]])))
 
 (defn build-full-path [cwd url]
   (str cwd (when url url)))

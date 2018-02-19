@@ -11,7 +11,7 @@
                  [org.clojure/core.async    "0.3.465"]
                  [org.clojure/tools.cli     "0.3.5"]])
 
-(def js-dependencies {:nexe "2.0.0-rc.22"})
+(def js-dependencies {:nexe "2.0.0-rc.25"})
 
 (require '[adzerk.boot-cljs :refer [cljs]])
 
